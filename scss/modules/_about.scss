@@ -1,0 +1,10 @@
+.about {
+    padding: 3em 0;
+    background: map-get($main-color-map, 4000);
+    color: map-get($main-color-map, 2000);
+    font-size: 16px;
+
+    p {
+        margin: 0;
+    }
+}

@@ -1,0 +1,15 @@
+// Import skeleton
+
+
+@import "./skeleton/skeleton.scss";     // Skeleton
+@import "./fontawesome/font-awesome.scss";
+
+// My code
+@import "modules/mixins";
+@import "modules/settings";
+@import "modules/utils";
+@import "modules/header";
+@import "modules/about";
+@import "modules/my-work";
+@import "modules/contact-me";
+@import "modules/footer";

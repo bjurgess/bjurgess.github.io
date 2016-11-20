@@ -1,0 +1,202 @@
+// Variables
+$font-family: "Open Sans", "Helvetica Neue", "Helvetica", sans-serif;
+
+$bp-larger-than-mobile    : "min-width: 400px" !default;
+$bp-larger-than-phablet   : "min-width: 550px" !default;
+$bp-larger-than-tablet    : "min-width: 750px" !default;
+$bp-larger-than-desktop   : "min-width: 1000px" !default;
+$bp-larger-than-desktophd : "min-width: 1200px" !default;
+
+// Gray colors
+$color-map-gray: (
+    1000: hsl(0, 0%, 20%),   // #333333
+    2000: hsl(0, 0%, 34.1%), // #575757
+    2500: hsl(0, 0%, 41%),   // #696969
+    3000: hsl(0, 0%, 50.2%), // #808080
+    4000: hsl(0, 0%, 70.2%), // #b3b3b3
+    5000: hsl(0, 0%, 76.9%), // #c4c4c4
+    6000: hsl(0, 0%, 91%),   // #e8e8e8
+    6500: hsl(0, 0%, 95%),
+    7000: hsl(0, 0%, 100%)   // #ffffff
+);
+
+$main-color-map: (
+    1000: #363436,
+    2000: #fff,
+    3000: #e5e4e5,
+    4000: #38b6e6,
+    5000: #4db9a2,
+    6000: #fecf38,
+    7000: #dd9128
+);
+
+$off-color: #16a085;
+$off-color-hover: #1abc9c;
+
+
+$h3-size: 28px;
+$h4-size: 18px;
+
+
+// Resets
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    position: relative;
+    font-family: $font-family;
+    background: map-get($main-color-map, 2000);
+    color: map-get($main-color-map, 1000);
+}
+
+a {
+    color: map-get($main-color-map, 4000);
+    text-decoration: none;
+}
+
+.input-group {
+    position: relative;
+    input, textarea {
+        width: 100%;
+        box-shadow: 0;
+        border-radius: 2px;
+        background: map-get($main-color-map, 3000);
+        margin-top: 25px;
+    }
+
+    textarea {
+        min-height: 100px;
+    }
+
+    label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: map-get($main-color-map, 3000);
+    }
+
+    .error {
+        box-shadow: 0 0 3px 2px #e74c3c;
+    }
+}
+
+.send-button {
+    //box-shadow: inset 0 0 0 0 map-get($main-color-map, 7000);
+    position: relative;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12), inset 0 0 0 0 map-get($main-color-map, 7000);
+    background: map-get($main-color-map, 6000);
+    border-radius: 2px;
+    font-family: "Raleway", sans-serif;
+    text-transform: capitalize;
+    transition: 0.3s ease;
+    overflow: hidden;
+    font-size: 16px;
+    text-align: center;
+    width: 100px;
+    height: 45px;
+    line-height: 45px;
+
+    &:before {
+        position: absolute;
+        font-family: "FontAwesome";
+        content: "\f1d8";
+        left: -100px;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        font-size: 16px;
+        text-indent: 0;
+        transition: 0.4s ease;
+        line-height: 45px;
+    }
+
+    &:hover {
+        //box-shadow: inset -100px 0 0 0 map-get($main-color-map, 7000);
+        //box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12), inset 100px 0 0 0 map-get($main-color-map, 7000);
+        text-indent: 1000px;
+    }
+
+    &:hover:before {
+        left: 0;
+        text-indent: 0;
+    }
+}
+
+
+
+.github-link {
+    color: map-get($main-color-map, 5000) !important;
+
+    &:hover {
+        color: darken(map-get($main-color-map, 5000), 10%) !important;
+    }
+}
+
+.linkedin-link {
+    color: map-get($main-color-map, 4000) !important;
+
+    &:hover {
+        color: darken(map-get($main-color-map, 4000), 10%) !important;
+    }
+}
+
+.codepen-link {
+    color: map-get($main-color-map, 7000) !important;
+
+    &:hover {
+        color: darken(map-get($main-color-map, 7000), 10%) !important;
+    }
+}
+
+.resume-link {
+    color: map-get($main-color-map, 2000) !important;
+
+    &:hover {
+        color: darken(map-get($main-color-map, 2000), 10%) !important;
+    }
+}
+
+
+.snackbar {
+    position: fixed;
+    z-index: 1000;
+    bottom: 20px;
+    right: 20px;
+
+    .toast {
+        background: map-get($main-color-map, 1000);
+        border: 1px solid #fff;
+        border-radius: 2px;
+        color: #fff;
+        padding: 24px;
+    }
+
+    em {
+        margin-right: 5px;
+    }
+
+    .toast-close {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        color: #fff;
+    }
+
+
+    .toast-success {
+        color: map-get($main-color-map, 5000);
+        border-color: map-get($main-color-map, 5000);
+    }
+
+    .toast-error {
+        color: #E83B0C;
+        border-color: #E83B0C;
+    }
+
+}
+
+//https://color.adobe.com/Brian---its-over-9000-color-theme-8093038/
+//https://color.adobe.com/Recover-color-theme-8092980/
