@@ -10,20 +10,17 @@ var uglify = require('gulp-uglify');
 
 
 // Static Server + watching scss/html files
-gulp.task('serve', ['sass', 'html', 'copy'], function() {
+gulp.task('serve', ['sass', 'html'], function() {
 
     browserSync.init({
         server: {
-            baseDir: "./dist/"
+            baseDir: "./"
         }
     });
 
-    gulp.watch("./src/scss/**/*.scss", ['sass']);
+    gulp.watch("./scss/**/*.scss", ['sass']);
     //gulp.watch("./src/scss/*.scss", ['sass']);
-    gulp.watch("./src/js/*.js", ['js-watch']);
-    gulp.watch("./src/*.html", ['html-watch']);
-    gulp.watch("./src/img/**/*", ['copy']);
-    gulp.watch("./src/fonts/**/*", ['copy']);
+    gulp.watch("./*.html", ['html-watch']);
 });
 
 
@@ -32,40 +29,16 @@ gulp.task('serve', ['sass', 'html', 'copy'], function() {
 // Then removes all unused css
 // Finally minimizes the file and places it into /dist/css
 gulp.task('sass', function() {
-    return gulp.src("./src/scss/base.scss")
+    return gulp.src("./scss/base.scss")
+        .on('error', function (err) {
+            console.error("Error!", err.message);
+            })
         .pipe(sass())
         .pipe(concat('main.css'))
         .pipe( postcss([require('autoprefixer')] ) )
-        .pipe(uncss({
-            ignore: [
-                '.error',
-                '.input-group .error',
-                '.snackbar',
-                '.snackbar *',
-                '.snackbar .toast',
-                '.snackbar .toast-error',
-                '.toast',
-                'em',
-                '.fa',
-                '.fa-check',
-                '.fa-times',
-                '.snackbar .toast-success'
-            ],
-            html: ['./src/index.html']
-        }))
         .pipe(nano())
-        .pipe(gulp.dest("./dist/css"))
+        .pipe(gulp.dest("./css"))
         .pipe(browserSync.stream());
-});
-
-gulp.task('copy', function() {
-    gulp.src('./src/img/**/*')
-        .pipe(gulp.dest('./dist/img/'));
-    gulp.src('./src/fonts/**/*')
-        .pipe(gulp.dest('./dist/fonts/'));
-    gulp.src('./code-examples/**/*')
-        .pipe(gulp.dest('./dist/code-examples/'));
-    browserSync.reload;
 });
 
 
@@ -74,13 +47,12 @@ gulp.task('js', function () {
     return gulp.src("./src/js/*js")
         .pipe(uglify())
         .pipe(concat('main.js'))
-        .pipe(gulp.dest('dist/js'));
+        .pipe(gulp.dest('./js'));
 });
 
 
 gulp.task('html', function () {
-    return gulp.src("./src/*.html")
-        .pipe(gulp.dest("./dist"))
+    return gulp.src("./*.html")
         .pipe(browserSync.stream());
 });
 
@@ -92,4 +64,4 @@ gulp.task('js-watch', ['js'], browserSync.reload);
 
 gulp.task('default', ['serve']);
 
-gulp.task('build', ['sass', 'copy', 'html', 'js']);
+gulp.task('build', ['sass', 'html', 'js']);

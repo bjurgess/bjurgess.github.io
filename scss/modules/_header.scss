@@ -1,135 +1,58 @@
-// Mixin used for generating buttons
-
-@mixin generateButton ($color) {
-    .button-logo {
-        border-color: $color;
-    }
-
-    &:hover {
-        .button-logo {
-            box-shadow: inset 0 -75px 0 0 $color;
-        }
-    }
-}
-
-
 .header {
+    /* Rectangle: */
+    background-image: linear-gradient(-134deg, #3023AE 0%, #C96DD8 100%);
+    border: 1px solid #979797;
+
     position: relative;
+    height: 75%;
+    height: 75vh;
+    width: 100%;
+
+    color: #fff;
     text-align: center;
-    color: map-get($main-color-map, 1000);
-    padding: 0 0 5.5em 0;
-    font-size: 16px;
-    background:map-get($main-color-map, 3000);
 
-    .logo {
-        //background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OTciIGhlaWdodD0iMzM4IiB2aWV3Qm94PSIwIDAgNDk3IDMzOCI+CiAgPGRlZnM+CiAgICA8c3R5bGU+CiAgICAgIC5jbHMtMSB7CiAgICAgICAgZmlsbDogIzdjNzk3YzsKICAgICAgICBmaWxsLXJ1bGU6IGV2ZW5vZGQ7CiAgICAgICAgb3BhY2l0eTogMC4yNDsKICAgICAgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CiAgPHBhdGggaWQ9IkhleGFnb24iIGNsYXNzPSJjbHMtMSIgZD0iTTk1OS41LDMzOEw3MTEsMjA4LjksODA1LjkxOCwwSDExMTMuMDhMMTIwOCwyMDguOVoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC03MTEpIi8+Cjwvc3ZnPgo=");
-        background-image: none;
-        background-repeat: no-repeat;
-        background-size: cover;
+    .intro-text {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-70%);
 
-        max-width: 100%;
-        margin: 0 auto;
-        //margin-top: -50px;
-        //padding-bottom: 69px;
+        width: 100%;
+    }
 
-        .logo-text {
-            position: relative;
-            padding-top: 5.5em;
-            padding-bottom: 2em;
+    .external-links {
+        position: absolute;
+        top: 70%;
 
-            // @media (#{$bp-larger-than-phablet}) {
-            //     padding-top: 8.95em;
-            //     padding-bottom: 0.4em;
-            // }
+        width: 100%;
+        text-align: center;
 
-            @media (#{$bp-larger-than-tablet}) {
-                padding-top: 12em;
-                padding-bottom: 0.4em;
+        font-size: 24px;
+
+        li {
+            display: inline-block;
+
+            a {
+                padding: 10px 15px;
+                color: #fff;
             }
-        }
-
-        h1 {
-            display: block;
-            text-transform: uppercase;
-            font-size: 36px;
-            margin-bottom: 0;
-        }
-
-        h2 {
-            display: block;
-            font-size: 24px;
-            text-transform: lowercase;
-            margin-bottom: 0;
-        }
-
-        @media (#{$bp-larger-than-tablet}) {
-            background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OTciIGhlaWdodD0iMzM4IiB2aWV3Qm94PSIwIDAgNDk3IDMzOCI+CiAgPGRlZnM+CiAgICA8c3R5bGU+CiAgICAgIC5jbHMtMSB7CiAgICAgICAgZmlsbDogIzdjNzk3YzsKICAgICAgICBmaWxsLXJ1bGU6IGV2ZW5vZGQ7CiAgICAgICAgb3BhY2l0eTogMC4yNDsKICAgICAgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CiAgPHBhdGggaWQ9IkhleGFnb24iIGNsYXNzPSJjbHMtMSIgZD0iTTk1OS41LDMzOEw3MTEsMjA4LjksODA1LjkxOCwwSDExMTMuMDhMMTIwOCwyMDguOVoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC03MTEpIi8+Cjwvc3ZnPgo=");
-            background-repeat: no-repeat;
-            background-size: cover;
-            max-width: 500px;
-            width: 100%;
-            margin: 0 auto;
-            margin-top: -50px;
-            padding-bottom: 69px;
         }
     }
 
-    .external-buttons {
-        margin-top: 36px;
-        width: 100%;
 
-        .ext-button {
-            display: inline-block;
-            margin-left: 24px;
+    h1 {
+        font-size: 40px;
+        margin-bottom: 18px;
+    }
 
-            @media (#{$bp-larger-than-phablet}) {
-                margin-left: 32px;
-            }
+    .next-section {
+        position: absolute;
+        bottom: 0;
+        left: 20px;
 
-            &:first-child {
-                margin-left: 0;
-            }
+        font-size: 24px;
 
-            .button-logo {
-                display: block;
-                border: 3px solid map-get($main-color-map, 5000);
-                width: 64px;
-                height: 64px;
-                border-radius: 50%;
-                font-size: 32px;
-                line-height: 64px;
-                color: inherit;
-                box-shadow: none;
-                transition: box-shadow 0.3s ease;
-            }
+        background: #333;
 
-            .button-name {
-                display: block;
-                color: inherit;
-                text-decoration: none;
-                font-weight: bold;
-                padding-top: 5px;
-                color: map-get($main-color-map, 1000);
-            }
-
-            &:hover {
-                .button-logo {
-                    box-shadow: inset 0px -75px 0 0 map-get($main-color-map, 5000);
-                }
-            }
-
-
-            &.github {
-                @include generateButton(map-get($main-color-map, 5000));
-            }
-
-            &.linkedin {
-                @include generateButton(map-get($main-color-map, 4000));
-            }
-
-            &.codepen {
-                @include generateButton(map-get($main-color-map, 7000));
-            }
-        }
+        padding: 10px 15px;
     }
 }
